@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+//end Google Fonts
+
+
+// MIXIN section
+
+@mixin mQ($arg){
+  @media screen and (max-width: $arg){
+    @content;
+  }
+}
+
+@mixin mB($arg,$arg2){
+  @media (min-width: $arg) and (max-width: $arg2){
+    @content;
+  }
+}
+
+@mixin minQ($arg){
+  @media (min-width: $arg){
+    @content;
+  }
+}
+
+@mixin iPad($arg,$arg2){
+  @media (min-width: $arg) and (min-height: $arg2){
+    @content;
+  }
+}
+
+//STAR variable section
+$nav-color: #E94643;
+$content-background: #EF5350;
+$talk: #FF9A91;
+$input-text: #636363;
+$open-serif: 'Open Sans', sans-serif;
+
+// breaking points media query variable
+$breakpoint-laptop: 1280px;
+$breakpoint-computer-980:980px;
+$breakpoint-tablet: 768px;
+$brakpoint-tablet700: 700px;
+$breakpoint-smartphone: 500px;
+$breakpoint-small-smartphone: 320px;
+$breakpoint-ipad: 767px;
+$breakpoint-k4: 1441px;
+
+
+
+// end variable
+body{
+  margin: 0;
+  font-family: $open-serif;
+  @include minQ($breakpoint-k4){
+   max-width: 1440px;
+   margin: 0 auto;
+   border: 1px solid #D7D7D7;
+   -webkit-box-shadow: 0px 9px 32px -1px rgba(0,0,0,0.75);
+   -moz-box-shadow: 0px 9px 32px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px 9px 32px -1px rgba(0,0,0,0.75);
+  }
+  nav{
+    background: $nav-color;
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    @include mQ($breakpoint-smartphone){
+    height: 80px;
+
+    }
+
+    #logo{
+      text-decoration: none;
+      color: white;
+      font-size: 30px;
+      font-weight: 900;
+      margin-left: 5rem;
+      @include mQ($breakpoint-smartphone){
+        font-size: 25px;
+        margin-left: 2rem;
+      }
+
+    }
+  }
+
+  // end nav bar section
+  .top-section{
+    width: 100%;
+    height: 66.5vh;
+    background:$content-background;
+    @include iPad($breakpoint-ipad,1024px){
+      height: 40vh;
+    }
+
+    img{
+      max-width: 100%;
+       width: auto;
+       height: 100vh;
+      @include mQ($breakpoint-smartphone){
+        visibility: hidden;
+      }
+
+
+      @include mQ($breakpoint-computer-980){
+        width: auto;
+        height: 95vh;
+        transform: translateY(1.4rem);
+      }
+      @include mB($breakpoint-tablet,$breakpoint-computer-980){
+        width: auto;
+        height: 80vh;
+        transform: translateY(5.3rem);
+      }
+      @include mB($breakpoint-smartphone,$breakpoint-tablet){
+        width: auto;
+        height: 70vh;
+        transform: translateY(8rem);
+      }
+      @include mB($breakpoint-smartphone,$brakpoint-tablet700){
+        width: auto;
+        height: 50vh;
+        transform: translateY(13.2rem);
+      }
+      @include iPad($breakpoint-ipad,1024px){
+        width: auto;
+        height: 45vh;
+        transform: translateY(6.5rem);
+      }
+
+    }
+    .content{
+      height: 300px;
+      max-width: 70%;
+      top: 50%;
+      transform: translateY(-50%);
+      position: absolute;
+      left: 50%;
+
+      @include mQ($breakpoint-smartphone){
+        left: 5%;
+        max-width: 90%;
+        top: 45%;
+      }
+      @include iPad($breakpoint-ipad,1024px){
+       top: 30%;
+       max-width: 45%;
+      }
+
+      h1{
+        color: white;
+
+
+      } //end h1 content
+      p{
+        color: white;
+        padding-bottom: 2rem;
+        @include mQ($breakpoint-smartphone){
+          padding-bottom: 1rem;
+        }
+      }
+
+      #now-more{
+        background: #02E4A2;
+        color: white;
+        width: 160px;
+        height: 50px;
+        border-radius: 9px;
+        font-size: 1em;
+        float: right;
+        margin-right: 1rem;
+
+        @include mQ($breakpoint-computer-980){
+          width: 120px;
+          height: 40px;
+          font-size: 0.8em;
+        }
+        @include iPad($breakpoint-ipad,1024px){
+         margin-right: 0rem;
+        }
+
+        &:hover{
+          cursor: pointer;
+        }
+      }
+    }//end content
+  }// end top-section
+
+  .bottom-section{
+    display: flex;
+    justify-content: flex-end;
+    @include mQ($breakpoint-smartphone){
+      justify-content: flex-start;
+    }
+
+    .font-section{
+      height: 400px;
+      width: 50%;
+      @include mQ($breakpoint-smartphone){
+        width: 90%;
+        margin: 0 5%;
+        height: 400px;
+      }
+
+
+      // background: blue;
+      .talk{
+        color: $talk;
+        margin-left: 1rem;
+      }
+      form{
+        max-width: 70%;
+
+        @include minQ($breakpoint-laptop){
+            max-width: 430px;
+        }
+
+
+        @include mB($breakpoint-small-smartphone,$breakpoint-smartphone){
+            max-width: 95%;
+        }
+
+
+        @include mB($breakpoint-smartphone,$brakpoint-tablet700){
+          max-width: 90%;
+        }
+        @include mB($brakpoint-tablet700,$breakpoint-computer-980){
+          max-width: 90%;
+        }
+
+
+        #send{
+          background: $content-background;
+          color: white;
+          width: 120px;
+          height: 40px;
+          border-radius: 8px;
+          float: right;
+          font-size: 1em;
+
+
+          &:hover{
+            cursor: pointer;
+          }
+
+        }
+
+        input{
+          border: 1px solid #DEF0FB;
+          border-radius: 5px;
+          height: 30px;
+          width: 48%;
+          margin-bottom: 1.5rem;
+          color: $input-text;
+          @include mQ($breakpoint-smartphone){
+            width: 100%;
+          }
+          @include mB($breakpoint-smartphone,$brakpoint-tablet700){
+            width: 100%;
+          }
+          @include mB(700px,$breakpoint-computer-980){
+            width: 48%;
+          }
+
+        }
+
+        textarea[name="message"]{
+          width: 97%;
+          height: 90px;
+          border: 1px solid #DEF0FB;
+          border-radius: 5px;
+          margin-bottom: 1.5rem;
+          color: $input-text;
+          @include mQ($breakpoint-smartphone){
+            width: 100%;
+          }
+
+        }
+      }
+
+
+    }
+
+  }
+
+
+}
